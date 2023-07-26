@@ -1,5 +1,6 @@
 import { Link, useRouteError } from "react-router-dom";
 import img from "../assets/404.gif";
+import { FaHome } from "react-icons/fa";
 const ErrorPage = () => {
   const error = useRouteError();
   return (
@@ -8,8 +9,8 @@ const ErrorPage = () => {
       <p className="mt-3 text-xl text-red-500">Page Not Pound!!</p>
       <p className="mt-2 text-xl text-red-500">{error.data}</p>
       <Link to="/">
-        <button className="btn bg-rose-700 mt-4 text-white ">
-          Back to HomePage
+        <button className="btn  mt-4">
+          Back to HomePage <FaHome />
         </button>
       </Link>
     </div>
