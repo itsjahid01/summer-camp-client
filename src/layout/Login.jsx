@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { FaEye } from "react-icons/fa";
 
 const Login = () => {
+  const [show, setShow] = useState(false);
   // const handleGoogleLogin = () => {
   //   googleLogin(googleProvider)
   //     .then((result) => {
@@ -36,26 +39,29 @@ const Login = () => {
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  className="input input-bordered"
-                />
+                <div className=" flex items-center">
+                  <input
+                    type={show ? "text" : "password"}
+                    placeholder="Password"
+                    name="password"
+                    className="input input-bordered w-full"
+                  />
+                  <FaEye onClick={() => setShow(!show)} className="-ml-7" />
+                </div>
               </div>
-              <div className="form-control w-4/6 mx-auto mt-6">
-                <button type="submit" className="btn bg-rose-600 text-white">
+              <div className="form-control w-36 mt-6">
+                <button type="submit" className="btn bg-[#1A1C38] text-white">
                   Login
                 </button>
               </div>
             </form>
-            <p className="mt-3 mb-3 text-center font-semibold">
+            <p className="mt-3 mb-3  font-semibold">
               Don't have an account?
               <Link to="/register" className="link-primary">
                 Sign Up
               </Link>
             </p>
-            <p className="text-center font-semibold">or Login With</p>
+            <p className="text-center text font-semibold">or </p>
             <button className="btn btn-outline w-4/6 mx-auto mt-3">
               <span className="mr-2">
                 <FaGoogle />

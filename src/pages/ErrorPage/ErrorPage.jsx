@@ -1,5 +1,5 @@
 import { Link, useRouteError } from "react-router-dom";
-import img from "../assets/404.gif";
+import img from "../../assets/404.gif";
 import { FaHome } from "react-icons/fa";
 const ErrorPage = () => {
   const error = useRouteError();
