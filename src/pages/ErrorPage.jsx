@@ -8,7 +8,9 @@ const ErrorPage = () => {
       <p className="mt-3 text-xl text-red-500">Page Not Pound!!</p>
       <p className="mt-2 text-xl text-red-500">{error.data}</p>
       <Link to="/">
-        <button className="btn mt-4 ">Back to HomePage</button>
+        <button className="btn bg-rose-700 mt-4 text-white ">
+          Back to HomePage
+        </button>
       </Link>
     </div>
   );

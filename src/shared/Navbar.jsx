@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.webp";
+import logo from "../assets/worldspeaklogo-removebg-preview.png";
 
 const Navbar = () => {
   //   const { logOut, user } = useContext(AuthContext);
@@ -16,8 +16,8 @@ const Navbar = () => {
   //   };
 
   return (
-    <div className="bg-[#2A2F4F] text-white">
-      <div className=" container mx-auto navbar">
+    <div className="">
+      <div className=" container mx-auto navbar font-semibold">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -38,7 +38,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-[#2A2F4F] rounded-box w-52"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52"
             >
               <li>
                 <Link to="/">Home</Link>
@@ -56,10 +56,7 @@ const Navbar = () => {
           </div>
           <Link to="/">
             <div className="flex ">
-              <img className="w-8 mr-2" src={logo} alt="" />
-              <span className=" normal-case text-xl font-bold italic">
-                Feel Good Yoga
-              </span>
+              <img className="w-1/2 mr-2" src={logo} alt="" />
             </div>
           </Link>
         </div>
@@ -98,6 +95,9 @@ const Navbar = () => {
               Login
             </Link>
           )} */}
+          <Link to="/login" className="btn ">
+            Login
+          </Link>
         </div>
       </div>
     </div>

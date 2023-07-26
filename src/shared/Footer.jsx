@@ -1,29 +1,40 @@
-import logo from "../assets/logo.webp";
+import logo from "../assets/worldspeaklogo-removebg-preview.png";
 import { FaFacebook } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className="bg-[#2A2F4F] text-white">
+    <div className="">
       <footer className="container mx-auto">
         <div className=" footer p-5">
-          <div>
-            <img className="w-14" src={logo} alt="" />
-            <p className="text-2xl font-bold italic">Feel Good Yoga</p>
+          <div className="text-center">
+            <img className="w-1/2 " src={logo} alt="" />
+            <p className="text-base ">Learn language to communicate</p>
           </div>
           <div>
-            <span className="footer-title">Links</span>
-            <a className="link link-hover">Home</a>
-            <a className="link link-hover">Contact</a>
+            <span className="footer-title">LANGUAGES</span>
+            <a className="link link-hover">Chinese</a>
+            <a className="link link-hover">English</a>
+            <a className="link link-hover">Spanish</a>
+            <a className="link link-hover">Arabic</a>
+            <a className="link link-hover">Portuguese</a>
+            <a className="link link-hover">Bengali</a>
+          </div>
+          <div>
+            <span className="footer-title">SCHOOL</span>
             <a className="link link-hover">About us</a>
+            <a className="link link-hover">Contact</a>
+            <a className="link link-hover">Become instructor</a>
+            <a className="link link-hover">documentation</a>
+            <a className="link link-hover">Terms of use</a>
+            <a className="link link-hover">Privacy policy</a>
           </div>
           <div>
             <span className="footer-title">Contact</span>
-            <a className="link link-hover">
-              Level-4, 34, Anam Rangs, Dhanmondi, Dhaka
-            </a>
+            <a className="link link-hover">164 7th Avenue, Seattle, WA 9801</a>
             <a className="link link-hover">Helpline: 01322810867</a>
+            <a className="link link-hover">Mon. - Fri.: 09:00 - 18:30</a>
             <a className="link link-hover">Support: admin@example.com</a>
           </div>
 
@@ -44,7 +55,7 @@ const Footer = () => {
         </div>
 
         <div className="text-center mt-3 pb-3">
-          <p>Copyright © 2023 - All right reserved by Toy Land</p>
+          <p>Copyright © 2023 - All right reserved</p>
         </div>
       </footer>
     </div>
