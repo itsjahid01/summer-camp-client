@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import SocialLogin from "../components/SocialLogin";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 const SignUp = () => {
   const [error, setError] = useState("");
+  const { registerUser, updateUserProfile } = useContext(AuthContext);
 
   const {
     register,
@@ -13,11 +15,21 @@ const SignUp = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
+
     if (data.password !== data.confirmPass) {
       setError("Your password did not match");
       return;
     }
+
+    registerUser(data.email, data.password)
+      .then((result) => {
+        console.log(result.user);
+        updateUserProfile(data.name, data.photoUrl)
+          .then(() => console.log("profile updated"))
+          .then((error) => console.log(error));
+      })
+      .catch((error) => setError(error.message));
   };
 
   return (
@@ -66,8 +78,7 @@ const SignUp = () => {
                   {...register("password", {
                     required: true,
                     minLength: 6,
-                    pattern:
-                      /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/,
+                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
                   })}
                   className="input input-bordered"
                 />
@@ -75,7 +86,7 @@ const SignUp = () => {
                   <p className="text-red-500">password is required</p>
                 )}
                 {errors.password?.type === "minLength" && (
-                  <p className="text-red-500"> password must be 6 character</p>
+                  <p className="text-red-500"> password must be 6 characters</p>
                 )}
                 {errors.password?.type === "pattern" && (
                   <p className="text-red-500">
@@ -94,7 +105,6 @@ const SignUp = () => {
                   {...register("confirmPass", { required: true })}
                   className="input input-bordered"
                 />
-                <p className="text-red-500">{error}</p>
               </div>
               <div className="form-control">
                 <label className="label">
@@ -110,6 +120,7 @@ const SignUp = () => {
                   <p className="text-red-500">photo Url is required</p>
                 )}
               </div>
+              <p className="text-red-500">{error}</p>
               <div className="form-control w-36 mt-6">
                 <button type="submit" className="btn bg-[#1A1C38] text-white">
                   Register
