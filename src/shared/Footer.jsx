@@ -2,7 +2,7 @@ import logo from "../assets/worldspeaklogo-removebg-preview.png";
 import { FaFacebook } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
-
+// import { FaLocationArrow } from "react-icons/fa";
 const Footer = () => {
   return (
     <div className="">

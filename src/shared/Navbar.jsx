@@ -5,6 +5,23 @@ const Navbar = () => {
   //   const { logOut, user } = useContext(AuthContext);
   //   const navigate = useNavigate();
 
+  const navItem = (
+    <>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/instructors">Instructors</Link>
+      </li>
+      <li>
+        <Link to="/classes">Classes</Link>
+      </li>
+      {/* <li>
+                <Link to="/dashboard"> Dashboard</Link>
+              </li> */}
+    </>
+  );
+
   //   const handleLogOut = () => {
   //     logOut()
   //       .then(() => {
@@ -40,18 +57,7 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52"
             >
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/instructors">Instructors</Link>
-              </li>
-              <li>
-                <Link to="/classes">Classes</Link>
-              </li>
-              {/* <li>
-                <Link to="/dashboard"> Dashboard</Link>
-              </li> */}
+              {navItem}
             </ul>
           </div>
           <Link to="/">
@@ -61,20 +67,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex ">
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/instructors">Instructors</Link>
-            </li>
-            <li>
-              <Link to="/classes">Classes</Link>
-            </li>
-            {/* <li>
-                <Link to="/dashboard"> Dashboard</Link>
-              </li> */}
-          </ul>
+          <ul className="menu menu-horizontal px-1">{navItem}</ul>
         </div>
         <div className="navbar-end">
           {/* {user && user ? (
