@@ -23,9 +23,9 @@ const Slider = () => {
         className="mySwiper h-[500px]"
       >
         <SwiperSlide>
-          <div className="flex items-center ">
+          <div className="flex items-center bg-[#5FA1CE] rounded">
             <div className="w-[40%] flex-col justify-center p-8">
-              <h2 className="text-4xl font-bold text-purple-500 mb-3">
+              <h2 className="text-4xl font-bold  mb-3">
                 Welcome to WorldSpeak
               </h2>
               <p className="mb-3">
