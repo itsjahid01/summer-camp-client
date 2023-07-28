@@ -13,7 +13,7 @@ const PopularInstructors = () => {
       });
   }, []);
   return (
-    <div>
+    <div className="my-5">
       <SectionTitle
         title={"Popular Instructors"}
         subtitle={"How people loves their instructors"}

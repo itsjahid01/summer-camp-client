@@ -4,7 +4,7 @@ const InstructorCard = ({ instructor }) => {
   const { Image, email, classes, name } = instructor;
 
   return (
-    <div className="card  shadow-2xl">
+    <div className="card rounded-none bg-[#93989E] shadow-2xl group-hover:scale-100">
       <figure>
         <img src={Image} alt="Movie" />
       </figure>
@@ -21,7 +21,7 @@ const InstructorCard = ({ instructor }) => {
           <span className="text-lg font-semibold">Classes: </span>
           {classes}
         </p>
-        <div className="card-actions justify-end">
+        <div className="">
           <button className="btn bg-[#1A1C38] text-white hover:text-black">
             See Classes
           </button>

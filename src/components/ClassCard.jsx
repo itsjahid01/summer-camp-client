@@ -3,7 +3,7 @@ const ClassCard = ({ singleClass }) => {
   const { Image, InstructorName, Name, Price, AvailableSeats } = singleClass;
 
   return (
-    <div className="card bg-[#B7D2ED] shadow-2xl">
+    <div className="card rounded-none bg-[#B7D2ED] shadow-2xl">
       <figure className="px-5 pt-5">
         <img src={Image} alt="Shoes" className="rounded-sm" />
       </figure>
