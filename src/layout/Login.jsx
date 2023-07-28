@@ -33,7 +33,7 @@ const Login = () => {
     <div className="container mx-auto">
       <div className="md:flex justify-center items-center gap-8 p-8 ">
         <div className=" md:w-1/2 p-5">
-          <div className="card shadow-2xl p-5">
+          <div className="card shadow-2xl p-5 bg-[#B7D2ED]">
             <h1 className="text-3xl font-bold text-center">Login</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="form-control">

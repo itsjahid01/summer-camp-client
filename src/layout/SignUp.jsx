@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../components/SocialLogin";
 import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
@@ -6,6 +6,7 @@ import { AuthContext } from "../provider/AuthProvider";
 
 const SignUp = () => {
   const [error, setError] = useState("");
+  const navigate = useNavigate();
   const { registerUser, updateUserProfile } = useContext(AuthContext);
 
   const {
@@ -26,7 +27,10 @@ const SignUp = () => {
       .then((result) => {
         console.log(result.user);
         updateUserProfile(data.name, data.photoUrl)
-          .then(() => console.log("profile updated"))
+          .then(() => {
+            console.log("profile updated");
+            navigate("/");
+          })
           .then((error) => console.log(error));
       })
       .catch((error) => setError(error.message));
@@ -36,7 +40,7 @@ const SignUp = () => {
     <div className="container mx-auto">
       <div className="md:flex justify-center items-center gap-8 p-8 ">
         <div className=" md:w-1/2 p-5">
-          <div className="card shadow-2xl p-5">
+          <div className="card shadow-2xl p-5 bg-[#B7D2ED]">
             <h1 className="text-3xl font-bold text-center">Sign Up</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="form-control">

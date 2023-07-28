@@ -29,7 +29,8 @@ const Slider = () => {
                 Welcome to WorldSpeak
               </h2>
               <p className="mb-3">
-                Skills for your present (and your future). Get started with us.
+                Skills for your present (and your future). <br /> Get started
+                with us.
               </p>
               <button className="btn bg-[#1A1C38] text-white hover:text-black">
                 Learn More
