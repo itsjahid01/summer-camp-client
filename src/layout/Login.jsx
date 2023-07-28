@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
 import SocialLogin from "../components/SocialLogin";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Login = () => {
+  const [error, setError] = useState("");
   const [show, setShow] = useState(false);
+  const { loginUser } = useContext(AuthContext);
 
   const {
     register,
@@ -15,6 +18,10 @@ const Login = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+
+    loginUser(data.email, data.password)
+      .then((result) => console.log(result.user))
+      .catch((error) => setError(error.message));
   };
 
   return (
@@ -55,6 +62,7 @@ const Login = () => {
                   <p className="text-red-500">password is required</p>
                 )}
               </div>
+              <p className="text-red-500">{error}</p>
               <div className="form-control w-36 mt-6">
                 <button type="submit" className="btn bg-[#1A1C38] text-white">
                   Login

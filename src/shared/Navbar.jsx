@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/worldspeaklogo-removebg-preview.png";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Navbar = () => {
-  //   const { logOut, user } = useContext(AuthContext);
-  //   const navigate = useNavigate();
+  const { logOut, user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const navItem = (
     <>
@@ -16,21 +18,25 @@ const Navbar = () => {
       <li>
         <Link to="/classes">Classes</Link>
       </li>
-      {/* <li>
-                <Link to="/dashboard"> Dashboard</Link>
-              </li> */}
+      {user ? (
+        <li>
+          <Link to="/dashboard"> Dashboard</Link>
+        </li>
+      ) : (
+        ""
+      )}
     </>
   );
 
-  //   const handleLogOut = () => {
-  //     logOut()
-  //       .then(() => {
-  //         navigate("/");
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   };
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="">
@@ -70,27 +76,26 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navItem}</ul>
         </div>
         <div className="navbar-end">
-          {/* {user && user ? (
+          {user && user ? (
             <>
               <div title={user?.displayName} className=" mr-4">
                 <img className="w-10 rounded-full" src={user?.photoURL} />
               </div>
               <Link
                 onClick={handleLogOut}
-                to="/login"
-                className="btn bg-[#917FB3]"
+                className="btn bg-[#1A1C38] text-white hover:text-black"
               >
                 Logout
               </Link>
             </>
           ) : (
-            <Link to="/login" className="btn bg-[#917FB3]">
+            <Link
+              to="/login"
+              className="btn bg-[#1A1C38] text-white hover:text-black"
+            >
               Login
             </Link>
-          )} */}
-          <Link to="/login" className="btn ">
-            Login
-          </Link>
+          )}
         </div>
       </div>
     </div>
