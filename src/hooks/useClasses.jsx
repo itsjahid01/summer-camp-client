@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 
 const useClasses = () => {
   const [classes, setClasses] = useState([]);
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/classes")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setClasses(data);
-  //     });
-  // }, []);
+  useEffect(() => {
+    fetch("http://localhost:5000/classes")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setClasses(data);
+      });
+  }, []);
   return [classes];
 };
 

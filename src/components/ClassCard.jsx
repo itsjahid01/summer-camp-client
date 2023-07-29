@@ -29,7 +29,10 @@ const ClassCard = ({ singleClass }) => {
           {AvailableSeats}
         </p>
         <div className="w-full ">
-          <button className="btn w-full bg-[#1A1C38] text-white hover:text-black">
+          <button
+            disabled={AvailableSeats === 0 ? "true" : ""}
+            className="btn w-full bg-[#1A1C38] text-white hover:text-black"
+          >
             Select Class
           </button>
         </div>

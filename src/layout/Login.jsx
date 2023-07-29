@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
 import SocialLogin from "../components/SocialLogin";
 import { useForm } from "react-hook-form";
@@ -9,8 +9,10 @@ const Login = () => {
   const [error, setError] = useState("");
   const [show, setShow] = useState(false);
   const { loginUser } = useContext(AuthContext);
-
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
 
   const {
     register,
@@ -24,7 +26,7 @@ const Login = () => {
     loginUser(data.email, data.password)
       .then((result) => {
         console.log(result.user);
-        navigate("/");
+        navigate(from);
       })
       .catch((error) => setError(error.message));
   };
