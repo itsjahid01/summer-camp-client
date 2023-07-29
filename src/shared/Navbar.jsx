@@ -21,13 +21,13 @@ const Navbar = () => {
       </li>
       {user ? (
         <li>
-          <Link to="/dashboard"> Dashboard</Link>
+          <Link to="/dashboard/student-home"> Dashboard</Link>
         </li>
       ) : (
         ""
       )}
       <li>
-        <Link to="/dashboard/selectedClass">
+        <Link to="/dashboard/selectedClasses">
           <FaShoppingCart />
           <sup className="badge badge-info">0</sup>
         </Link>
