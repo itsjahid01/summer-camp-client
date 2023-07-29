@@ -5,8 +5,10 @@ import { FaYoutube } from "react-icons/fa";
 // import { FaLocationArrow } from "react-icons/fa";
 const Footer = () => {
   return (
-    <div className="">
+    <div className="mt-8">
       <footer className="container mx-auto">
+        <hr />
+        <br />
         <div className=" footer p-5">
           <div className="text-center">
             <img className="w-1/2 " src={logo} alt="" />

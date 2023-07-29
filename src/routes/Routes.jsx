@@ -3,8 +3,8 @@ import Main from "../layout/Main";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Login from "../layout/Login";
 import SignUp from "../layout/SignUp";
-import Instructors from "../pages/Instructors";
-import Classes from "../pages/Classes";
+import Instructors from "../pages/Instructors/Instructors";
+import Classes from "../pages/Classes/Classes";
 import Home from "../pages/Home/Home";
 
 export const router = createBrowserRouter([

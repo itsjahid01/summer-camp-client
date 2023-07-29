@@ -1,7 +1,7 @@
 const InstructorCard = ({ instructor }) => {
   console.log(instructor);
 
-  const { Image, email, classes, name } = instructor;
+  const { Image, email, classes, name, classesName } = instructor;
 
   return (
     <div className="card rounded-none bg-[#93989E] shadow-2xl group-hover:scale-100">
@@ -20,6 +20,12 @@ const InstructorCard = ({ instructor }) => {
         <p>
           <span className="text-lg font-semibold">Classes: </span>
           {classes}
+        </p>
+        <p>
+          <span className="text-lg font-semibold">Name of Classes: </span>
+          {classesName.map((item, index) => (
+            <span key={index}>{item}, </span>
+          ))}
         </p>
         <div className="">
           <button className="btn bg-[#1A1C38] text-white hover:text-black">

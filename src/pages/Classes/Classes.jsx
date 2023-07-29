@@ -1,19 +1,17 @@
-import SectionTitle from "../../components/SectionTitle";
-
 import ClassCard from "../../components/ClassCard";
+import SectionTitle from "../../components/SectionTitle";
 import useClasses from "../../hooks/useClasses";
 
-const PopularClasses = () => {
+const Classes = () => {
   const [classes] = useClasses();
-
   return (
-    <div className="my-5">
+    <div className="container mx-auto my-5">
       <SectionTitle
-        title={"Popular Classes"}
+        title={"Our Classes"}
         subtitle={"How people join our courses"}
       ></SectionTitle>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 p-5">
-        {classes.slice(0, 6).map((singleClass) => (
+        {classes.map((singleClass) => (
           <ClassCard
             key={singleClass?._id}
             singleClass={singleClass}
@@ -24,4 +22,4 @@ const PopularClasses = () => {
   );
 };
 
-export default PopularClasses;
+export default Classes;
