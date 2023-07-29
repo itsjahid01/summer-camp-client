@@ -4,7 +4,7 @@ const InstructorCard = ({ instructor }) => {
   const { Image, email, classes, name, classesName } = instructor;
 
   return (
-    <div className="card rounded-none bg-[#93989E] shadow-2xl group-hover:scale-100">
+    <div className="card rounded-none bg-[#93989E] shadow-2xl transform transition-all hover:scale-95 ">
       <figure>
         <img src={Image} alt="Movie" />
       </figure>

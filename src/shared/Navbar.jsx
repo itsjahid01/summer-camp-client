@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/worldspeaklogo-removebg-preview.png";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import { FaShoppingCart } from "react-icons/fa";
 
 const Navbar = () => {
   const { logOut, user } = useContext(AuthContext);
@@ -25,6 +26,12 @@ const Navbar = () => {
       ) : (
         ""
       )}
+      <li>
+        <Link to="/dashboard/selectedClass">
+          <FaShoppingCart />
+          <sup className="badge badge-info">0</sup>
+        </Link>
+      </li>
     </>
   );
 
