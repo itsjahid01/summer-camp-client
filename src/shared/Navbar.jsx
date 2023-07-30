@@ -1,36 +1,39 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/worldspeaklogo-removebg-preview.png";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { FaShoppingCart } from "react-icons/fa";
+import "../shared/navbar.css";
+import useSelectedClasses from "../hooks/useSelectedClasses";
 
 const Navbar = () => {
   const { logOut, user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [classes] = useSelectedClasses();
 
   const navItem = (
     <>
       <li>
-        <Link to="/">Home</Link>
+        <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <Link to="/instructors">Instructors</Link>
+        <NavLink to="/instructors">Instructors</NavLink>
       </li>
       <li>
-        <Link to="/classes">Classes</Link>
+        <NavLink to="/classes">Classes</NavLink>
       </li>
       {user ? (
         <li>
-          <Link to="/dashboard/student-home"> Dashboard</Link>
+          <NavLink to="/dashboard/student-home"> Dashboard</NavLink>
         </li>
       ) : (
         ""
       )}
       <li>
-        <Link to="/dashboard/selectedClasses">
+        <NavLink to="/dashboard/selectedClasses">
           <FaShoppingCart />
-          <sup className="badge badge-info">0</sup>
-        </Link>
+          <sup className="badge badge-info">{classes.length || 0}</sup>
+        </NavLink>
       </li>
     </>
   );
@@ -68,7 +71,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52"
+              className="menu menu-compact dropdown-content sidebar mt-3 p-2 shadow rounded-box w-52"
             >
               {navItem}
             </ul>
@@ -80,7 +83,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex ">
-          <ul className="menu menu-horizontal px-1">{navItem}</ul>
+          <ul className="menu menu-horizontal sidebar px-1">{navItem}</ul>
         </div>
         <div className="navbar-end">
           {user && user ? (

@@ -4,12 +4,16 @@ import { FaWallet } from "react-icons/fa";
 import { MdPeople } from "react-icons/md";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoIosPeople } from "react-icons/io";
+import "../layout/dashboard.css";
+import useSelectedClasses from "../hooks/useSelectedClasses";
 
 const Dashboard = () => {
+  const [classes] = useSelectedClasses();
+
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col items-center justify-center">
+      <div className="drawer-content flex flex-col  justify-center ">
         <label
           htmlFor="my-drawer-2"
           className="btn btn-primary drawer-button lg:hidden"
@@ -21,7 +25,7 @@ const Dashboard = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-72 h-full bg-cyan-100 text-base-content">
+        <ul className="menu sidebar p-4 w-72 h-full bg-cyan-100 text-base-content">
           {/* Sidebar content here */}
           <li>
             <NavLink to={"/dashboard/student-home"}>
@@ -30,7 +34,7 @@ const Dashboard = () => {
           </li>
           <li>
             <NavLink to={"/dashboard/enrolled-classes"}>
-              <FaHome /> Enrolled Classes
+              <IoIosPeople /> Enrolled Classes
             </NavLink>
           </li>
           <li>
@@ -41,11 +45,12 @@ const Dashboard = () => {
           <li>
             <NavLink to={"/dashboard/selectedClasses"}>
               <FaShoppingCart /> Selected Classes
+              <div className="badge badge-info">+{classes.length || 0}</div>
             </NavLink>
           </li>
+
           {/* divider */}
           <div className="divider"></div>
-
           <li>
             <Link to={"/"}>
               <FaHome /> Home

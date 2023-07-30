@@ -2,11 +2,13 @@ import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
+import useSelectedClasses from "../hooks/useSelectedClasses";
 
 const ClassCard = ({ singleClass }) => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const [, refetch] = useSelectedClasses();
 
   // console.log(singleClass);
   const { Image, InstructorName, Name, Price, AvailableSeats } = singleClass;
@@ -35,6 +37,7 @@ const ClassCard = ({ singleClass }) => {
         .then((data) => {
           console.log(data);
           if (data.insertedId) {
+            refetch();
             Swal.fire({
               position: "top-end",
               icon: "success",
@@ -90,7 +93,7 @@ const ClassCard = ({ singleClass }) => {
         <div className="w-full ">
           <button
             onClick={() => handleSelectClass(singleClass)}
-            disabled={AvailableSeats === 0 ? "true" : ""}
+            disabled={AvailableSeats === 0 ? true : ""}
             className="btn w-full bg-[#1A1C38] text-white hover:text-black"
           >
             Select Class
