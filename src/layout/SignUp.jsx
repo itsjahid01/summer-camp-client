@@ -3,6 +3,7 @@ import SocialLogin from "../components/SocialLogin";
 import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const [error, setError] = useState("");
@@ -29,6 +30,13 @@ const SignUp = () => {
         updateUserProfile(data.name, data.photoUrl)
           .then(() => {
             console.log("profile updated");
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "User Created successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
             navigate("/");
           })
           .then((error) => console.log(error));

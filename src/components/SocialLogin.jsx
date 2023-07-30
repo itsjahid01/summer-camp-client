@@ -3,6 +3,7 @@ import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../provider/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const SocialLogin = ({ text }) => {
   const { googleLogin } = useContext(AuthContext);
@@ -14,6 +15,13 @@ const SocialLogin = ({ text }) => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User login successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate("/");
       })
       .catch((error) => {

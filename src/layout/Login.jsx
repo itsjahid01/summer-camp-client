@@ -4,6 +4,7 @@ import { FaEye } from "react-icons/fa";
 import SocialLogin from "../components/SocialLogin";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [error, setError] = useState("");
@@ -26,6 +27,13 @@ const Login = () => {
     loginUser(data.email, data.password)
       .then((result) => {
         console.log(result.user);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User login successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate(from);
       })
       .catch((error) => setError(error.message));
