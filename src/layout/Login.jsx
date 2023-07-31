@@ -90,7 +90,7 @@ const Login = () => {
                 Sign Up
               </Link>
             </p>
-            <SocialLogin text={"login with"}></SocialLogin>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>

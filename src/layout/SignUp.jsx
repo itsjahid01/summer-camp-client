@@ -27,19 +27,34 @@ const SignUp = () => {
     registerUser(data.email, data.password)
       .then((result) => {
         console.log(result.user);
+        const user = result.user;
         updateUserProfile(data.name, data.photoUrl)
           .then(() => {
-            console.log("profile updated");
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "User Created successfully",
-              showConfirmButton: false,
-              timer: 1500,
-            });
-            navigate("/");
+            // console.log("profile updated");
+            const saveUser = { name: user?.displayName, email: user?.email };
+            fetch("http://localhost:5000/users", {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(saveUser),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                console.log(data);
+                if (data?.insertedId) {
+                  Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "User Created successfully",
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+                  navigate("/");
+                }
+              });
           })
-          .then((error) => console.log(error));
+          .catch((error) => console.log(error));
       })
       .catch((error) => setError(error.message));
   };
@@ -145,7 +160,7 @@ const SignUp = () => {
                 Log in
               </Link>
             </p>
-            <SocialLogin text={"sign up with"}></SocialLogin>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>
