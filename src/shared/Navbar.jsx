@@ -10,6 +10,7 @@ const Navbar = () => {
   const { logOut, user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [classes] = useSelectedClasses();
+  const isAdmin = true;
 
   const navItem = (
     <>
@@ -22,12 +23,14 @@ const Navbar = () => {
       <li>
         <NavLink to="/classes">Classes</NavLink>
       </li>
-      {user ? (
+      {isAdmin ? (
+        <li>
+          <NavLink to="/dashboard/admin-home"> Dashboard</NavLink>
+        </li>
+      ) : (
         <li>
           <NavLink to="/dashboard/student-home"> Dashboard</NavLink>
         </li>
-      ) : (
-        ""
       )}
       <li>
         <NavLink to="/dashboard/selectedClasses">

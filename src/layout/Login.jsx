@@ -5,6 +5,7 @@ import SocialLogin from "../components/SocialLogin";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
+import loginImg from "../assets/login.jpg";
 
 const Login = () => {
   const [error, setError] = useState("");
@@ -41,7 +42,10 @@ const Login = () => {
 
   return (
     <div className="container mx-auto">
-      <div className="md:flex justify-center items-center gap-8 p-8 ">
+      <div className="md:flex justify-center items-center gap-5 p-8 ">
+        <div className="w-1/2 p-5">
+          <img src={loginImg} alt="" />
+        </div>
         <div className=" md:w-1/2 p-5">
           <div className="card shadow-2xl p-5 bg-[#B7D2ED]">
             <h1 className="text-3xl font-bold text-center">Login</h1>
@@ -79,7 +83,10 @@ const Login = () => {
               </div>
               <p className="text-red-500">{error}</p>
               <div className="form-control w-36 mt-6">
-                <button type="submit" className="btn bg-[#1A1C38] text-white">
+                <button
+                  type="submit"
+                  className="btn bg-[#1A1C38] text-white hover:text-black"
+                >
                   Login
                 </button>
               </div>

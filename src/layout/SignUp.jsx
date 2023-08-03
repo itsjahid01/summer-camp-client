@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
+import signUpImg from "../assets/signup.jpg";
 
 const SignUp = () => {
   const [error, setError] = useState("");
@@ -62,6 +63,9 @@ const SignUp = () => {
   return (
     <div className="container mx-auto">
       <div className="md:flex justify-center items-center gap-8 p-8 ">
+        <div className="w-1/2 p-5">
+          <img src={signUpImg} alt="" />
+        </div>
         <div className=" md:w-1/2 p-5">
           <div className="card shadow-2xl p-5 bg-[#B7D2ED]">
             <h1 className="text-3xl font-bold text-center">Sign Up</h1>
@@ -149,7 +153,10 @@ const SignUp = () => {
               </div>
               <p className="text-red-500">{error}</p>
               <div className="form-control w-36 mt-6">
-                <button type="submit" className="btn bg-[#1A1C38] text-white">
+                <button
+                  type="submit"
+                  className="btn bg-[#1A1C38] text-white hover:text-black"
+                >
                   Register
                 </button>
               </div>
