@@ -3,7 +3,7 @@ import useSelectedClasses from "../../../hooks/useSelectedClasses";
 import { MdDelete } from "react-icons/md";
 const SelectedClasses = () => {
   const [classes, refetch] = useSelectedClasses();
-  console.log(classes);
+  // console.log(classes);
   const total = classes.reduce((sum, item) => sum + item.Price, 0);
 
   const handleDelete = (_id) => {

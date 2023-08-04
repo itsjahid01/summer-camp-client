@@ -5,12 +5,13 @@ import { AuthContext } from "../provider/AuthProvider";
 import { FaShoppingCart } from "react-icons/fa";
 import "../shared/navbar.css";
 import useSelectedClasses from "../hooks/useSelectedClasses";
+import useAdmin from "../hooks/useAdmin";
 
 const Navbar = () => {
   const { logOut, user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [classes] = useSelectedClasses();
-  const isAdmin = true;
+  const [role, isRoleLoading] = useAdmin();
 
   const navItem = (
     <>
@@ -23,9 +24,13 @@ const Navbar = () => {
       <li>
         <NavLink to="/classes">Classes</NavLink>
       </li>
-      {isAdmin ? (
+      {role?.role === "admin" ? (
         <li>
           <NavLink to="/dashboard/admin-home"> Dashboard</NavLink>
+        </li>
+      ) : role?.role === "instructor" ? (
+        <li>
+          <NavLink to="/dashboard/instructor-home"> Dashboard</NavLink>
         </li>
       ) : (
         <li>

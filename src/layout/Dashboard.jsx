@@ -7,10 +7,13 @@ import { FaShoppingCart } from "react-icons/fa";
 import { IoIosPeople } from "react-icons/io";
 import "../layout/dashboard.css";
 import useSelectedClasses from "../hooks/useSelectedClasses";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
   const [classes] = useSelectedClasses();
-  const isAdmin = true;
+
+  const [role] = useAdmin();
+  // console.log(role);
 
   return (
     <div className="drawer lg:drawer-open">
@@ -29,11 +32,29 @@ const Dashboard = () => {
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu sidebar p-4 w-72 h-full bg-cyan-100 text-base-content">
           {/* Sidebar content here */}
-          {isAdmin ? (
+          {role?.role === "admin" ? (
             <>
               <li>
                 <NavLink to={"/dashboard/admin-home"}>
                   <FaHome /> Admin Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={"/dashboard/manage-classes"}>
+                  <FaWallet /> Manage Classes
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={"/dashboard/manage-users"}>
+                  <MdPeople /> Manage Users
+                </NavLink>
+              </li>
+            </>
+          ) : role?.role === "instructor" ? (
+            <>
+              <li>
+                <NavLink to={"/dashboard/instructor-home"}>
+                  <FaHome /> Instructor Home
                 </NavLink>
               </li>
               <li>

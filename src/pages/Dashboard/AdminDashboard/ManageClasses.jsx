@@ -1,15 +1,79 @@
 import React from "react";
 import useClasses from "../../../hooks/useClasses";
 import { BiCheck } from "react-icons/bi";
-import { MdOutlinePending } from "react-icons/md";
+import { MdOutlineFeedback } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
+import Swal from "sweetalert2";
 
 const ManageClasses = () => {
-  const [Classes] = useClasses();
-  console.log(Classes);
+  const [Classes, refetch] = useClasses();
+  // console.log(Classes);
+
+  const handleApproved = (item) => {
+    fetch(`http://localhost:5000/classes/approved/${item?._id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        refetch();
+        console.log(data);
+        if (data?.modifiedCount > 0) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${item?.Name} is approved now!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
+
+  const handleDenied = (item) => {
+    fetch(`http://localhost:5000/classes/denied/${item?._id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        refetch();
+        console.log(data);
+        if (data?.modifiedCount > 0) {
+          Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: `${item?.Name} is Denied!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
+
+  const handleFeedback = (item) => {
+    const { value: text } = Swal.fire({
+      input: "textarea",
+      inputLabel: "Admin Feedback",
+      inputPlaceholder: "Type your feedback here...",
+      inputAttributes: {
+        "aria-label": "Type your feedback here",
+      },
+      showCancelButton: true,
+    });
+
+    if (text) {
+      Swal.fire(text);
+    }
+  };
+
   return (
     <div>
-      <h2 className="text-3xl font-bold text-center mb-5">Manage Classes </h2>
+      <h2 className="text-3xl font-bold text-center mb-2">Manage Classes </h2>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
@@ -19,6 +83,7 @@ const ManageClasses = () => {
               <th>Image</th>
               <th>Class name</th>
               <th>Instructor name</th>
+              <th>Email</th>
               <th>Seats</th>
               <th>Price</th>
               <th>Status</th>
@@ -36,27 +101,30 @@ const ManageClasses = () => {
                 </td>
                 <td>{item?.Name}</td>
                 <td>{item?.InstructorName}</td>
+                <td>{item?.email}</td>
                 <td>{item?.AvailableSeats}</td>
                 <td>${item?.Price}</td>
-                <td>{}</td>
-                <th className="flex flex-col gap-2">
+                <td>{item?.status}</td>
+                <th className="flex gap-2">
                   <button
-                    // onClick={() => handleAdmin(user?._id)}
-                    className="btn-success text-lg p-1 w-7 rounded "
+                    disabled={item?.status === "approved"}
+                    onClick={() => handleApproved(item)}
+                    className="btn btn-success text-lg p-0 h-7 w-7 rounded "
                   >
                     <BiCheck />
                   </button>
                   <button
-                    // onClick={() => handleInstructor(user?._id)}
-                    className="btn-info text-lg p-1  w-7 rounded "
-                  >
-                    <MdOutlinePending />
-                  </button>
-                  <button
-                    // onClick={() => handleDelete(user?._id)}
-                    className="btn-error text-lg p-1  w-7 rounded "
+                    disabled={item?.status === "denied"}
+                    onClick={() => handleDenied(item)}
+                    className=" btn btn-info text-lg p-1  w-7 rounded "
                   >
                     <RxCross2 />
+                  </button>
+                  <button
+                    onClick={() => handleFeedback(item)}
+                    className=" btn btn-error text-lg p-1  w-7 rounded "
+                  >
+                    <MdOutlineFeedback />
                   </button>
                 </th>
               </tr>
