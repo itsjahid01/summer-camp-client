@@ -3,12 +3,14 @@ import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import useSelectedClasses from "../hooks/useSelectedClasses";
+import useAdmin from "../hooks/useAdmin";
 
 const ClassCard = ({ singleClass }) => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const [, refetch] = useSelectedClasses();
+  const [role] = useAdmin();
 
   // console.log(singleClass);
   const { Image, InstructorName, Name, Price, AvailableSeats } = singleClass;
@@ -93,7 +95,13 @@ const ClassCard = ({ singleClass }) => {
         <div className="w-full ">
           <button
             onClick={() => handleSelectClass(singleClass)}
-            disabled={AvailableSeats === 0 ? true : ""}
+            disabled={
+              AvailableSeats === 0
+                ? true
+                : role?.role === "admin" || role?.role === "instructor"
+                ? true
+                : ""
+            }
             className="btn w-full bg-[#1A1C38] text-white hover:text-black"
           >
             Select Class

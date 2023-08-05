@@ -13,6 +13,15 @@ import SelectedClasses from "../pages/Dashboard/StudentDashboard/SelectedClasses
 import AdminHome from "../pages/Dashboard/AdminDashboard/AdminHome";
 import ManageClasses from "../pages/Dashboard/AdminDashboard/ManageClasses";
 import ManageUsers from "../pages/Dashboard/AdminDashboard/ManageUsers";
+import StudentRoute from "./StudentRoute";
+import InstructorHome from "../pages/Dashboard/InstructorDashboard/InstructorHome";
+import AdminRoute from "./AdminRoute";
+import EnrolledClasses from "../pages/Dashboard/StudentDashboard/EnrolledClasses";
+import PaymentHistory from "../pages/Dashboard/StudentDashboard/PaymentHistory";
+import Payment from "../pages/Dashboard/StudentDashboard/Payment";
+import InstructorRoute from "./InstructorRoute";
+import MyClasses from "../pages/Dashboard/InstructorDashboard/MyClasses";
+import AddClass from "../pages/Dashboard/InstructorDashboard/AddClass";
 
 export const router = createBrowserRouter([
   {
@@ -50,29 +59,96 @@ export const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      // student routes
       {
         path: "/dashboard/student-home",
-        element: <StudentHome></StudentHome>,
+        element: (
+          <StudentRoute>
+            <StudentHome></StudentHome>
+          </StudentRoute>
+        ),
       },
       {
         path: "/dashboard/selectedClasses",
-        element: <SelectedClasses></SelectedClasses>,
+        element: (
+          <StudentRoute>
+            <SelectedClasses></SelectedClasses>
+          </StudentRoute>
+        ),
       },
       {
         path: "/dashboard/enrolled-classes",
-        element: <SelectedClasses></SelectedClasses>,
+        element: (
+          <StudentRoute>
+            <EnrolledClasses></EnrolledClasses>
+          </StudentRoute>
+        ),
       },
       {
+        path: "/dashboard/payment-history",
+        element: (
+          <StudentRoute>
+            <PaymentHistory></PaymentHistory>
+          </StudentRoute>
+        ),
+      },
+      {
+        path: "/dashboard/payment",
+        element: (
+          <StudentRoute>
+            <Payment></Payment>
+          </StudentRoute>
+        ),
+      },
+      // admin routes
+      {
         path: "/dashboard/admin-home",
-        element: <AdminHome></AdminHome>,
+        element: (
+          <AdminRoute>
+            <AdminHome></AdminHome>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/manage-classes",
-        element: <ManageClasses></ManageClasses>,
+        element: (
+          <AdminRoute>
+            <ManageClasses></ManageClasses>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/manage-users",
-        element: <ManageUsers></ManageUsers>,
+        element: (
+          <AdminRoute>
+            <ManageUsers></ManageUsers>
+          </AdminRoute>
+        ),
+      },
+      // instructor routes
+      {
+        path: "/dashboard/instructor-home",
+        element: (
+          <InstructorRoute>
+            <InstructorHome></InstructorHome>
+          </InstructorRoute>
+        ),
+      },
+      {
+        path: "/dashboard/my-classes",
+        element: (
+          <InstructorRoute>
+            <MyClasses></MyClasses>
+          </InstructorRoute>
+        ),
+      },
+      {
+        path: "/dashboard/add-class",
+        element: (
+          <InstructorRoute>
+            <AddClass></AddClass>
+          </InstructorRoute>
+        ),
       },
     ],
   },

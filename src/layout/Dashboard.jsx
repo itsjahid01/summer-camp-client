@@ -2,8 +2,9 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 // import { FaUserGroup } from "react-icons/fa";
 import { FaWallet } from "react-icons/fa";
-import { MdPeople } from "react-icons/md";
+import { MdLibraryAdd, MdPeople } from "react-icons/md";
 import { FaShoppingCart } from "react-icons/fa";
+import { BiCalendar } from "react-icons/bi";
 import { IoIosPeople } from "react-icons/io";
 import "../layout/dashboard.css";
 import useSelectedClasses from "../hooks/useSelectedClasses";
@@ -58,13 +59,13 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/dashboard/manage-classes"}>
-                  <FaWallet /> Manage Classes
+                <NavLink to={"/dashboard/my-classes"}>
+                  <BiCalendar /> My Classes
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/dashboard/manage-users"}>
-                  <MdPeople /> Manage Users
+                <NavLink to={"/dashboard/add-class"}>
+                  <MdLibraryAdd /> Add Class
                 </NavLink>
               </li>
             </>

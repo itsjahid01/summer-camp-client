@@ -32,10 +32,12 @@ const Navbar = () => {
         <li>
           <NavLink to="/dashboard/instructor-home"> Dashboard</NavLink>
         </li>
-      ) : (
+      ) : role?.role === "student" ? (
         <li>
           <NavLink to="/dashboard/student-home"> Dashboard</NavLink>
         </li>
+      ) : (
+        ""
       )}
       <li>
         <NavLink to="/dashboard/selectedClasses">
