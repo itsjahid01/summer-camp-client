@@ -1,6 +1,7 @@
 import Swal from "sweetalert2";
 import useSelectedClasses from "../../../hooks/useSelectedClasses";
 import { MdDelete } from "react-icons/md";
+import { Link } from "react-router-dom";
 const SelectedClasses = () => {
   const [classes, refetch] = useSelectedClasses();
   // console.log(classes);
@@ -23,7 +24,7 @@ const SelectedClasses = () => {
           .then((res) => res.json())
           .then((data) => {
             refetch();
-            console.log(data);
+            // console.log(data);
             if (data?.deletedCount > 0) {
               Swal.fire("Deleted!", "Your file has been deleted.", "success");
             }
@@ -40,7 +41,14 @@ const SelectedClasses = () => {
       <div className="flex justify-evenly items-center">
         <h2 className="text-3xl font-bold">Total Items: {classes.length}</h2>
         <h2 className="text-3xl font-bold">Total Price: ${total}</h2>
-        <button className="btn  btn-info">Pay</button>
+        <Link to="/dashboard/payment">
+          <button
+            disabled={classes.length === 0 ? true : ""}
+            className="btn  btn-info"
+          >
+            Pay
+          </button>
+        </Link>
       </div>
       <div className="overflow-x-auto">
         <table className="table">
