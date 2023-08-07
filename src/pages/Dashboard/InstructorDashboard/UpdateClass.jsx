@@ -17,13 +17,16 @@ const UpdateClass = () => {
 
     const updatedClass = { Name, Price, AvailableSeats, Image };
 
-    fetch(`http://localhost:5000/classes/update/${_id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updatedClass),
-    })
+    fetch(
+      `https://summer-camp-server-side-peach.vercel.app/classes/update/${_id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updatedClass),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);

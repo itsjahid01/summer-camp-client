@@ -27,7 +27,7 @@ export default useAdmin;
 
 // queryFn: async () => {
 //       const res = await fetch(
-//         `http://localhost:5000/users/admin/${user?.email}`,
+//         `https://summer-camp-server-side-peach.vercel.app/users/admin/${user?.email}`,
 //         {
 //           headers: {
 //             authorization: `bearer ${token}`,

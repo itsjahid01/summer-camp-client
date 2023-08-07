@@ -38,7 +38,7 @@ const SignUp = () => {
               email: user?.email,
               role: "student",
             };
-            fetch("http://localhost:5000/users", {
+            fetch("https://summer-camp-server-side-peach.vercel.app/users", {
               method: "POST",
               headers: {
                 "content-type": "application/json",

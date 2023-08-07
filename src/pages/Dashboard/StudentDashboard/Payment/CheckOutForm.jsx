@@ -70,7 +70,7 @@ const CheckOutForm = ({ classes, refetch, price }) => {
 
     setProcessing(false);
 
-    if (paymentIntent.status === "succeeded") {
+    if (paymentIntent?.status === "succeeded") {
       setTransactionId(paymentIntent?.id);
       const transactionId = paymentIntent?.id;
       const payment = {

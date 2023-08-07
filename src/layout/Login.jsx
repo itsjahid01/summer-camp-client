@@ -47,7 +47,7 @@ const Login = () => {
         <title>WorldSpeak | Login</title>
       </Helmet>
       <div className="md:flex justify-center items-center gap-5 p-8 ">
-        <div className="w-1/2 p-5">
+        <div className=" md:w-1/2 p-5">
           <img src={loginImg} alt="" />
         </div>
         <div className=" md:w-1/2 p-5">

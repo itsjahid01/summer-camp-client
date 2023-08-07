@@ -28,13 +28,16 @@ const ClassCard = ({ singleClass }) => {
         email: user?.email,
       };
 
-      fetch("http://localhost:5000/selectedClasses", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(item),
-      })
+      fetch(
+        "https://summer-camp-server-side-peach.vercel.app/selectedClasses",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(item),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           // console.log(data);

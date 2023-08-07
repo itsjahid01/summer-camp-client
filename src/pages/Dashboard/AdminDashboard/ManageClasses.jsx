@@ -11,12 +11,15 @@ const ManageClasses = () => {
   // console.log(Classes);
 
   const handleApproved = (item) => {
-    fetch(`http://localhost:5000/classes/approved/${item?._id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-    })
+    fetch(
+      `https://summer-camp-server-side-peach.vercel.app/classes/approved/${item?._id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         refetch();
@@ -34,12 +37,15 @@ const ManageClasses = () => {
   };
 
   const handleDenied = (item) => {
-    fetch(`http://localhost:5000/classes/denied/${item?._id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-    })
+    fetch(
+      `https://summer-camp-server-side-peach.vercel.app/classes/denied/${item?._id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         refetch();

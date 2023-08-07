@@ -21,7 +21,7 @@ const SocialLogin = () => {
 
         const saveUser = { name: user?.displayName, email: user?.email };
 
-        fetch("http://localhost:5000/users", {
+        fetch("https://summer-camp-server-side-peach.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

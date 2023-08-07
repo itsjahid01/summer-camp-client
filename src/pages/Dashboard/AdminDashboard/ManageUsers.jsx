@@ -9,12 +9,15 @@ const ManageUsers = () => {
   const [users, refetch] = useAllUsers();
 
   const handleMakeAdmin = (user) => {
-    fetch(`http://localhost:5000/users/admin/${user?._id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-    })
+    fetch(
+      `https://summer-camp-server-side-peach.vercel.app/users/admin/${user?._id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         refetch();
@@ -32,12 +35,15 @@ const ManageUsers = () => {
   };
 
   const handleMakeInstructor = (user) => {
-    fetch(`http://localhost:5000/users/instructor/${user?._id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-    })
+    fetch(
+      `https://summer-camp-server-side-peach.vercel.app/users/instructor/${user?._id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         refetch();
@@ -65,7 +71,7 @@ const ManageUsers = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://summer-camp-server-side-peach.vercel.app/users/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

@@ -159,7 +159,9 @@ export const router = createBrowserRouter([
           </InstructorRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/classes/update/${params.id}`),
+          fetch(
+            `https://summer-camp-server-side-peach.vercel.app/classes/update/${params.id}`
+          ),
       },
     ],
   },
