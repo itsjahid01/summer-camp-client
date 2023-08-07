@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import useSelectedClasses from "../../../hooks/useSelectedClasses";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 const SelectedClasses = () => {
   const [classes, refetch] = useSelectedClasses();
   // console.log(classes);
@@ -35,6 +36,9 @@ const SelectedClasses = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>WorldSpeak | Selected Classes</title>
+      </Helmet>
       <h2 className="text-center font-bold text-3xl mb-2">
         My Selected Classes
       </h2>

@@ -4,6 +4,7 @@ import { BiCheck } from "react-icons/bi";
 import { MdOutlineFeedback } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const ManageClasses = () => {
   const [Classes, refetch] = useClasses();
@@ -19,7 +20,7 @@ const ManageClasses = () => {
       .then((res) => res.json())
       .then((data) => {
         refetch();
-        console.log(data);
+        // console.log(data);
         if (data?.modifiedCount > 0) {
           Swal.fire({
             position: "top-end",
@@ -42,7 +43,7 @@ const ManageClasses = () => {
       .then((res) => res.json())
       .then((data) => {
         refetch();
-        console.log(data);
+        // console.log(data);
         if (data?.modifiedCount > 0) {
           Swal.fire({
             position: "top-end",
@@ -73,6 +74,9 @@ const ManageClasses = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>WorldSpeak | Manage Classes</title>
+      </Helmet>
       <h2 className="text-3xl font-bold text-center mb-2">Manage Classes </h2>
       <div className="overflow-x-auto">
         <table className="table">

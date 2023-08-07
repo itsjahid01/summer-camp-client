@@ -6,6 +6,8 @@ import { FaShoppingCart } from "react-icons/fa";
 import "../shared/navbar.css";
 import useSelectedClasses from "../hooks/useSelectedClasses";
 import useAdmin from "../hooks/useAdmin";
+import DarkModeToggle from "../components/DarkModeToggle";
+import "../components/Darkmode.css";
 
 const Navbar = () => {
   const { logOut, user } = useContext(AuthContext);
@@ -59,8 +61,8 @@ const Navbar = () => {
   };
 
   return (
-    <div className="">
-      <div className=" container mx-auto navbar font-semibold">
+    <div className="container mx-auto">
+      <div className="  navbar font-semibold ">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -81,7 +83,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content sidebar mt-3 p-2 shadow rounded-box w-52"
+              className="menu menu-compact dropdown-content sidebar z-50 bg-white mt-3 p-2 shadow rounded-box w-52"
             >
               {navItem}
             </ul>
@@ -116,6 +118,7 @@ const Navbar = () => {
               Login
             </Link>
           )}
+          <DarkModeToggle></DarkModeToggle>
         </div>
       </div>
     </div>

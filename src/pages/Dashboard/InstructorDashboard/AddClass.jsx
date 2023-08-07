@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const img_hosting_key = import.meta.env.VITE_img_hosting_key;
 
@@ -56,6 +57,9 @@ const AddClass = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>WorldSpeak | Add A Class</title>
+      </Helmet>
       <h2 className="text-2xl text-center font-bold">Add A Class</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="card-body px-16">
         <div className="form-control">

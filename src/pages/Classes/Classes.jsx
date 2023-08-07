@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import ClassCard from "../../components/ClassCard";
 import SectionTitle from "../../components/SectionTitle";
 import useClasses from "../../hooks/useClasses";
@@ -6,6 +7,9 @@ const Classes = () => {
   const [classes] = useClasses();
   return (
     <div className="container mx-auto my-5">
+      <Helmet>
+        <title>WorldSpeak | Classes</title>
+      </Helmet>
       <SectionTitle
         title={"Our Classes"}
         subtitle={"How people join our courses"}

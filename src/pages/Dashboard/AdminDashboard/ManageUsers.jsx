@@ -3,6 +3,7 @@ import useAllUsers from "../../../hooks/useAllUsers";
 import { MdAdminPanelSettings, MdDelete } from "react-icons/md";
 import { GiTeacher } from "react-icons/gi";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const ManageUsers = () => {
   const [users, refetch] = useAllUsers();
@@ -81,6 +82,9 @@ const ManageUsers = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>WorldSpeak | Manage Users</title>
+      </Helmet>
       <h2 className="text-3xl font-bold text-center">Manage Users </h2>
       <p className="text-3xl font-semibold ml-4">Total Users: {users.length}</p>
       <div className="overflow-x-auto">

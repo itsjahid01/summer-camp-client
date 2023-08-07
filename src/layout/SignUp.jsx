@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 import signUpImg from "../assets/signup.jpg";
+import { Helmet } from "react-helmet-async";
 
 const SignUp = () => {
   const [error, setError] = useState("");
@@ -66,6 +67,9 @@ const SignUp = () => {
 
   return (
     <div className="container mx-auto">
+      <Helmet>
+        <title>WorldSpeak | SignUp</title>
+      </Helmet>
       <div className="md:flex justify-center items-center gap-8 p-8 ">
         <div className="w-1/2 p-5">
           <img src={signUpImg} alt="" />

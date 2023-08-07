@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { FaRegEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const MyClasses = () => {
   const { user } = useContext(AuthContext);
@@ -20,6 +21,9 @@ const MyClasses = () => {
   const handleUpdate = () => {};
   return (
     <div>
+      <Helmet>
+        <title>WorldSpeak | My Classes</title>
+      </Helmet>
       <h2 className="text-3xl text-center font-bold">My Classes</h2>
       <div className="overflow-x-auto">
         <table className="table">
@@ -49,13 +53,13 @@ const MyClasses = () => {
                 <td>{item?.Name}</td>
                 <td>{item?.AvailableSeats}</td>
                 <td>${item?.Price}</td>
-                <td>{}</td>
+                <td>{0}</td>
                 <td>{item?.status}</td>
                 <td>{}</td>
                 <th className="flex gap-2">
-                  <Link to="/dash">
+                  <Link to={`/dashboard/my-classes/update/${item?._id}`}>
                     <button
-                      // onClick={() => handleUpdate(item)}
+                      disabled={item?.status === "approved" ? true : ""}
                       className="btn btn-success text-lg rounded "
                     >
                       <FaRegEdit />

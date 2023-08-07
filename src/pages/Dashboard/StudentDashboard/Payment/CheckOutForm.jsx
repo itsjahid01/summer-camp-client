@@ -5,7 +5,7 @@ import { AuthContext } from "../../../../provider/AuthProvider";
 import Swal from "sweetalert2";
 // import "./checkOutForm.css";
 
-const CheckOutForm = ({ classes, price }) => {
+const CheckOutForm = ({ classes, refetch, price }) => {
   //   console.log(price);
   const stripe = useStripe();
   const elements = useElements();
@@ -49,6 +49,7 @@ const CheckOutForm = ({ classes, price }) => {
       setCardError("");
       //   console.log("paymentMethod", paymentMethod);
     }
+
     setProcessing(true);
     const { paymentIntent, error: confirmError } =
       await stripe.confirmCardPayment(clientSecret, {
@@ -68,6 +69,7 @@ const CheckOutForm = ({ classes, price }) => {
     // console.log("payment intent", paymentIntent);
 
     setProcessing(false);
+
     if (paymentIntent.status === "succeeded") {
       setTransactionId(paymentIntent?.id);
       const transactionId = paymentIntent?.id;
@@ -85,6 +87,7 @@ const CheckOutForm = ({ classes, price }) => {
       axiosSecure.post("/payments", payment).then((res) => {
         // console.log(res.data);
         if (res?.data?.insertResult?.insertedId) {
+          refetch();
           Swal.fire({
             position: "top-end",
             icon: "success",

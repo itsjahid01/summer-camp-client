@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 import loginImg from "../assets/login.jpg";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const [error, setError] = useState("");
@@ -42,6 +43,9 @@ const Login = () => {
 
   return (
     <div className="container mx-auto">
+      <Helmet>
+        <title>WorldSpeak | Login</title>
+      </Helmet>
       <div className="md:flex justify-center items-center gap-5 p-8 ">
         <div className="w-1/2 p-5">
           <img src={loginImg} alt="" />

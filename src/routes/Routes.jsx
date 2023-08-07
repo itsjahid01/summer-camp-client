@@ -22,6 +22,7 @@ import Payment from "../pages/Dashboard/StudentDashboard/Payment/Payment";
 import InstructorRoute from "./InstructorRoute";
 import MyClasses from "../pages/Dashboard/InstructorDashboard/MyClasses";
 import AddClass from "../pages/Dashboard/InstructorDashboard/AddClass";
+import UpdateClass from "../pages/Dashboard/InstructorDashboard/UpdateClass";
 
 export const router = createBrowserRouter([
   {
@@ -149,6 +150,16 @@ export const router = createBrowserRouter([
             <AddClass></AddClass>
           </InstructorRoute>
         ),
+      },
+      {
+        path: "/dashboard/my-classes/update/:id",
+        element: (
+          <InstructorRoute>
+            <UpdateClass></UpdateClass>
+          </InstructorRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/classes/update/${params.id}`),
       },
     ],
   },
