@@ -128,7 +128,7 @@ const CheckOutForm = ({ classes, refetch, price }) => {
         </button>
         {cardError && <p className="text-red-600 mt-4">{cardError}</p>}
         {transactionId && (
-          <p className="text-green-500 mt-4">Payment Successfully done.</p>
+          <p className="text-green-500 mt-4">Payment Successfully done.Your transaction Id {transactionId}</p>
         )}
       </form>
     </>
