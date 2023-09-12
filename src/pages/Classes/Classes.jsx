@@ -14,7 +14,7 @@ const Classes = () => {
         title={"Our Classes"}
         subtitle={"How people join our courses"}
       ></SectionTitle>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 p-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 p-5">
         {classes.map((singleClass) => (
           <ClassCard
             key={singleClass?._id}

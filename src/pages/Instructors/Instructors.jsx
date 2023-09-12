@@ -15,7 +15,7 @@ const Instructors = () => {
         title={"Our Instructors"}
         subtitle={"How people loves their instructors"}
       ></SectionTitle>
-      <div className="grid grid-cols-1  lg:grid-cols-2 gap-5 p-5">
+      <div className="grid grid-cols-1  lg:grid-cols-2 gap-10 p-5">
         {instructors.map((instructor) => (
           <InstructorCard
             key={instructor?._id}
